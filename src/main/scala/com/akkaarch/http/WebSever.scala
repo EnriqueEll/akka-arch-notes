@@ -6,8 +6,6 @@ import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import scala.io.StdIn
-import java.io.PrintWriter
-import java.io.File
 import com.akkaarch.http.routes.FileUploadRoute
 
 object WebServer {
