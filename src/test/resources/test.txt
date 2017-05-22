@@ -1,0 +1,4 @@
+## Test File
+To test the File Upload ty the command below. You will see the content of the file as reply 
+
+curl -i -X POST -H "Content-Type: multipart/form-data" -F "txt=@text.txt" http://localhost:8080/

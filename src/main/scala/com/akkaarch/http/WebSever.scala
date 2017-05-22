@@ -1,4 +1,4 @@
-package com.primeduc.http
+package com.akkaarch.http
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
@@ -8,10 +8,7 @@ import akka.stream.ActorMaterializer
 import scala.io.StdIn
 import java.io.PrintWriter
 import java.io.File
-import akka.http.scaladsl.marshalling.ToResponseMarshallable.apply
-import akka.http.scaladsl.server.Directive.addByNameNullaryApply
-import akka.http.scaladsl.server.Directive.addDirectiveApply
-import akka.http.scaladsl.server.RouteResult.route2HandlerFlow
+import com.akkaarch.http.routes.FileUploadRoute
 
 object WebServer {
   def main(args: Array[String]) {
@@ -21,28 +18,10 @@ object WebServer {
 
     implicit val executionContext = system.dispatcher
 
-    val route =
-      extractRequestContext { ctx =>
-        implicit val materializer = ctx.materializer
-        fileUpload("txt") {
-          case (metadata, byteSource) =>
-            val printFile = new PrintWriter(new File("text.txt"))
-            byteSource.mapConcat(x => x).
-              runForeach(x => printFile.write(x))
-              .onComplete {
-                case (done) =>
-                  printFile.close()
-              }
-            //*
-            complete(s"Sum: Test")
-        }
-      } ~
-        get {
-          path("test")
-          complete(HttpEntity(ContentTypes.`text/xml(UTF-8)`, <h1>Say hello to akka-http</h1>.toString))
-        }
+    val routes =
+      FileUploadRoute().routes
 
-    val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)
+    val bindingFuture = Http().bindAndHandle(routes, "localhost", 8080)
 
     println(s"Server online at http://localhost:8080/\nPress RETURN to stop...")
     StdIn.readLine() // let it run until user presses return
