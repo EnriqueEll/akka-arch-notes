@@ -7,6 +7,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import scala.io.StdIn
 import com.akkaarch.http.routes.FileUploadRoute
+import com.akkaarch.http.routes.JsonRoute
 
 object WebServer {
   def main(args: Array[String]) {
@@ -17,7 +18,8 @@ object WebServer {
     implicit val executionContext = system.dispatcher
 
     val routes =
-      FileUploadRoute().routes
+      FileUploadRoute().routes ~ //File Upload route
+      JsonRoute().routes // JsonRoute
 
     val bindingFuture = Http().bindAndHandle(routes, "localhost", 8080)
 

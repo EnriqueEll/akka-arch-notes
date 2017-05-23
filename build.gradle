@@ -20,6 +20,8 @@ repositories {
 
 dependencies {
 	compile 'org.scala-lang:scala-library:2.11.8'
+	
+	compile group: 'com.typesafe.akka', name: 'akka-http-spray-json_2.11', version: '10.0.6'
 	compile group: 'org.scala-lang.modules', name: 'scala-xml_2.11', version: '1.0.6'
 	compile group: 'com.typesafe.akka', name: 'akka-http_2.11', version: '10.0.6'
 	compile group: 'com.typesafe.akka', name: 'akka-http-core_2.11', version: '10.0.6'
