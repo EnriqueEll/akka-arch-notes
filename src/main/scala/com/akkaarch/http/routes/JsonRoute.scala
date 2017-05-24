@@ -1,11 +1,18 @@
 package com.akkaarch.http.routes
 import akka.http.scaladsl.server.Directives
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-
 import spray.json._
 
 final case class Product(id: Int, name: String)
 final case class Order(product: List[Product])
+
+object OrderDB {
+  var list: List[Order] = List()
+  
+  def add(order: Order) = {
+    list = order :: list
+  }
+}
 
 case class JsonRoute() extends Directives with SprayJsonSupport with DefaultJsonProtocol {
 
@@ -14,10 +21,18 @@ case class JsonRoute() extends Directives with SprayJsonSupport with DefaultJson
 
   val routes = {
     get {
-      path("order") {//get Param
-        complete(Order(List(Product(1, "Glasses Oculos"), Product(2, "Nice Hat"))))
+      path("order" / IntNumber) { //This is really awesome
+        int => //get Param
+        complete(Order(List(Product(int, "Glasses Oculos"), Product(int+2, "Nice Hat"))))
+      }
+    } ~
+    post{
+      path("order-create") {// {"product":[{"id":123423413,"name":"Glasses Oculos"},{"id":123423415,"name":"Nice Hat"}]}
+        entity(as[Order]) {
+          order =>  OrderDB.add(order) //Yeah this is blocking and it is just a test
+          complete("Order Add")
+        }
       }
     }
-    // build a unmarshaller Post here
   }
 }
