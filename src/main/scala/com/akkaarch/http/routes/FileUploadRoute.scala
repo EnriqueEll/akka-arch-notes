@@ -4,7 +4,6 @@ import scala.concurrent.ExecutionContextExecutor
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.model.HttpEntity
 import akka.http.scaladsl.model.ContentTypes
-import scala.concurrent.impl.Future
 import scala.concurrent.Future
 
 case class FileUploadRoute(implicit val executionContext: ExecutionContextExecutor) {

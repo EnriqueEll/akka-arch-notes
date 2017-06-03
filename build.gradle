@@ -19,16 +19,16 @@ repositories {
 }
 
 dependencies {
-	compile 'org.scala-lang:scala-library:2.11.8'
+	compile 'org.scala-lang:scala-library:2.12.2'
 	
-	compile group: 'com.typesafe.akka', name: 'akka-http-spray-json_2.11', version: '10.0.6'
-	compile group: 'org.scala-lang.modules', name: 'scala-xml_2.11', version: '1.0.6'
-	compile group: 'com.typesafe.akka', name: 'akka-http_2.11', version: '10.0.6'
-	compile group: 'com.typesafe.akka', name: 'akka-http-core_2.11', version: '10.0.6'
+	compile group: 'com.typesafe.akka', name: 'akka-http-spray-json_2.12', version: '10.0.6'
+	compile group: 'org.scala-lang.modules', name: 'scala-xml_2.12', version: '1.0.6'
+	compile group: 'com.typesafe.akka', name: 'akka-http_2.12', version: '10.0.6'
+	compile group: 'com.typesafe.akka', name: 'akka-http-core_2.12', version: '10.0.6'
     
     // Use Unit test framework
-	testCompile group: 'org.scalactic', name: 'scalactic_2.11', version: '3.0.3'
-    testCompile "org.scalatest:scalatest_2.11:3.0.3:test" 
+	testCompile group: 'org.scalactic', name: 'scalactic_2.12', version: '3.0.3'
+    testCompile "org.scalatest:scalatest_2.12:3.0.3:test" 
        
 }
 
