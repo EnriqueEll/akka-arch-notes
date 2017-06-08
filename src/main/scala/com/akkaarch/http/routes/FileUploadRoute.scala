@@ -6,7 +6,7 @@ import akka.http.scaladsl.model.HttpEntity
 import akka.http.scaladsl.model.ContentTypes
 import scala.concurrent.Future
 
-case class FileUploadRoute(implicit val executionContext: ExecutionContextExecutor) {
+case class FileUploadRoute()(implicit val executionContext: ExecutionContextExecutor) {
 
   def routes =
     extractRequestContext { ctx =>
