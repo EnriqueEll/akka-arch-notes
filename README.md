@@ -4,13 +4,13 @@ Initial idea of this project is to study Akka
 # How to get start:
 TBD
 
-# Gradle
+## Gradle
 TBD
 
-# Sbt
+## Sbt
 TBD
 
-# Packages 
+## Packages 
 Start with Akka HTTP and Akka Core.
 
 Main Server Class:
