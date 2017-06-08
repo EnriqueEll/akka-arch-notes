@@ -8,7 +8,13 @@ TBD
 TBD
 
 ## Sbt
-TBD
+Run AkkaAch 
+
+`sbt run`
+
+### Dependecies
+[Dependencies.scala](project/Dependencies.scala) - Contains all dependencies library.
+
 
 ## Packages 
 Start with Akka HTTP and Akka Core.
