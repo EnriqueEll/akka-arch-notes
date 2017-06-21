@@ -10,5 +10,6 @@ lazy val root = (project in file(".")).
     name := "AkkaArch",
     libraryDependencies += scalaTest % Test,
     libraryDependencies += scala,
+    libraryDependencies ++= webJars,
     libraryDependencies ++= akka
   )

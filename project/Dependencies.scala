@@ -8,4 +8,9 @@ object Dependencies {
   ,"com.typesafe.akka" %% "akka-http-core" % "10.0.6")
 
   lazy val scala = "org.scala-lang.modules" %% "scala-xml" % "1.0.6"
+  
+   lazy val webJars = Seq("org.webjars" % "bootstrap" % "3.3.7-1", 
+       "org.webjars" % "webjars-locator" % "0.32-1")
+   
+   
 }
